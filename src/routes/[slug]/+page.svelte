@@ -5,12 +5,9 @@
 </script>
 
 <section>
-	<h1>ブログ</h1>
-	<ul>
-		{#each data.contents as content}
-			<li><a href={content.id}>{content.title}</a></li>
-		{/each}
-	</ul>
+	<h1>{data.title}</h1>
+	<img src={data.eyecatch?.url} alt="" />
+	<div>{@html data.content}</div>
 </section>
 
 <style>
