@@ -4,7 +4,7 @@
 	export let data: PageData;
 </script>
 
-<section>
+<section class="flex flex-col justify-center items-center">
 	<h1>ブログ</h1>
 	<ul class="text-rose-500">
 		{#each data.contents as content}
@@ -12,12 +12,3 @@
 		{/each}
 	</ul>
 </section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-</style>
