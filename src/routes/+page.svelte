@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import { Alert } from 'flowbite-svelte';
 
 	export let data: PageData;
 </script>
@@ -11,4 +12,9 @@
 			<li><a href={content.id}>{content.title}</a></li>
 		{/each}
 	</ul>
+	<div class="p-8">
+		<Alert>
+			<span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
+		</Alert>
+	</div>
 </section>
