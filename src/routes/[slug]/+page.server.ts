@@ -21,4 +21,5 @@ export const load: PageServerLoad = async ({ params }): Promise<blogListPageData
 	};
 };
 
-export const prerender = 'auto';
+export const prerender = false;
+export const csr = true;

@@ -5,4 +5,4 @@ export const load: LayoutServerLoad = async () => {
 	return await getTravels();
 };
 
-export const prerender = 'auto';
+export const prerender = true;
