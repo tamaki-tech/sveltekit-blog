@@ -12,6 +12,7 @@ type blogListPageData = {
 };
 
 export const load: PageServerLoad = async ({ params }): Promise<blogListPageData> => {
+	// TODO refactor
 	const travel = await getTravelById(params.slug);
 	const blogs = await getBlogsByTravelId(params.slug);
 	return {
@@ -20,4 +21,4 @@ export const load: PageServerLoad = async ({ params }): Promise<blogListPageData
 	};
 };
 
-export const prerender = false;
+export const prerender = 'auto';

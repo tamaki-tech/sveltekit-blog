@@ -1,8 +1,8 @@
 import { getTravels } from '../lib/api/schemas';
-import type { PageServerLoad } from './[slug]/$types';
+import type { LayoutServerLoad } from './$types';
 
-export const load: PageServerLoad = async () => {
+export const load: LayoutServerLoad = async () => {
 	return await getTravels();
 };
 
-export const prerender = true;
+export const prerender = 'auto';
