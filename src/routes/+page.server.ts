@@ -1,7 +1,7 @@
 import { getTravels } from '../lib/api/schemas';
-import type { LayoutServerLoad } from './$types';
+import type { PageServerLoad } from './$types';
 
-export const load: LayoutServerLoad = async () => {
+export const load: PageServerLoad = async () => {
 	return await getTravels();
 };
 

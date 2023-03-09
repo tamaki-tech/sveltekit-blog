@@ -1,11 +1,17 @@
 <script lang="ts">
-	import { Heading } from 'flowbite-svelte';
-	import { Alert } from 'flowbite-svelte';
+	import type { PageData } from './$types';
+	import { List, Li, Heading, A } from 'flowbite-svelte';
+
+	export let data: PageData;
 </script>
 
-<section class="p-8">
-	<Heading customSize="text-3xl">ブログ</Heading>
-	<Alert>
-		<span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
-	</Alert>
+<section class=" p-20">
+	<Heading customSize="text-3xl">Travel Logs</Heading>
+	<List tag="ul" class="space-y-1">
+		{#each data.contents as travel}
+			<Li>
+				<A href={travel.id}>{travel.name}</A>
+			</Li>
+		{/each}
+	</List>
 </section>
