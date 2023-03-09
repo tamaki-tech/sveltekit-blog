@@ -8,7 +8,7 @@
 <section class=" p-20">
 	<Heading customSize="text-3xl">{data.travel.name}</Heading>
 	<List tag="ul" class="space-y-1">
-		{#each data.blogs.contents as blog}
+		{#each data.blogs as blog}
 			<Li>{blog.day}日目</Li>
 		{/each}
 	</List>

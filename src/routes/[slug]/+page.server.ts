@@ -1,20 +1,22 @@
-import {
-	getBlogsByTravelId,
-	getTravelById,
-	type BlogResponse,
-	type Travel
-} from '$lib/api/schemas';
+import { getBlogsByTravelId, getTravelById, type Travel } from '$lib/api/schemas';
 import type { PageServerLoad } from './$types';
 
-type blogListPageData = {
+type BlogListPageData = {
 	travel: Travel;
-	blogs: BlogResponse;
+	blogs: {
+		id: string;
+		day: number;
+	}[];
 };
 
-export const load: PageServerLoad = async ({ params }): Promise<blogListPageData> => {
+export const load: PageServerLoad = async ({ params }): Promise<BlogListPageData> => {
 	// TODO refactor
 	const travel = await getTravelById(params.slug);
-	const blogs = await getBlogsByTravelId(params.slug);
+	const blogs = await (
+		await getBlogsByTravelId(params.slug)
+	).contents.map((c) => {
+		return { id: c.id, day: c.day };
+	});
 	return {
 		travel,
 		blogs
