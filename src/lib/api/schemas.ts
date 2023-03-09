@@ -7,6 +7,8 @@ export type Blog = {
 	updatedAt: string;
 	publishedAt: string;
 	revisedAt: string;
+	travel: Travel;
+	day: number;
 	title: string;
 	content: string;
 	eyecatch?: MicroCMSImage;
@@ -18,14 +20,40 @@ export type BlogResponse = {
 	contents: Blog[];
 };
 
+export type Travel = {
+	id: string;
+	createdAt: string;
+	updatedAt: string;
+	publishedAt: string;
+	revisedAt: string;
+	name: string;
+};
+
+export type TravelResponse = {
+	totalCount: number;
+	offset: number;
+	limit: number;
+	contents: Travel[];
+};
+
 export const getList = async (queries?: MicroCMSQueries) => {
 	return await client.get<BlogResponse>({ endpoint: 'blogs', queries });
 };
 
-export const getDetail = async (contentId: string, queries?: MicroCMSQueries) => {
-	return await client.getListDetail<Blog>({
+export const getBlogsByTravelId = async (travelId: string) => {
+	return await client.get<BlogResponse>({
 		endpoint: 'blogs',
-		contentId,
-		queries
+		queries: { filters: `travel[equals]${travelId}` }
 	});
+};
+
+export const getTravelById = async (travelId: string) => {
+	return await client.get<Travel>({
+		endpoint: 'travels',
+		contentId: travelId
+	});
+};
+
+export const getTravels = async (queries?: MicroCMSQueries) => {
+	return await client.get<TravelResponse>({ endpoint: 'travels', queries });
 };

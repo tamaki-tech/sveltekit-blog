@@ -14,6 +14,9 @@
 		CloseButton
 	} from 'flowbite-svelte';
 	import { sineIn } from 'svelte/easing';
+	import type { LayoutData } from './$types';
+
+	export let data: LayoutData;
 
 	let width: number;
 	let activateClickOutside = true;
@@ -67,11 +70,19 @@
 		<SidebarWrapper divClass="overflow-hidden py-4 px-3 rounded dark:bg-gray-800">
 			<SidebarGroup>
 				<SidebarItem
-					label="Home"
+					label="HOME"
 					href="/"
 					on:click={toggleSide}
-					active={$page.url.pathname === `/`}
+					active={$page.url.pathname === '/'}
 				/>
+				{#each data.contents as travel}
+					<SidebarItem
+						label={travel.name}
+						href={`/${travel.id}`}
+						on:click={toggleSide}
+						active={$page.url.pathname === `/${travel.id}`}
+					/>
+				{/each}
 			</SidebarGroup>
 		</SidebarWrapper>
 	</Sidebar>

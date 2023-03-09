@@ -1,12 +1,15 @@
 <script lang="ts">
-	import { Heading, Img } from 'flowbite-svelte';
-	import type { PageData } from './$types';
+	import type { PageServerData } from './$types';
+	import { List, Li, Heading } from 'flowbite-svelte';
 
-	export let data: PageData;
+	export let data: PageServerData;
 </script>
 
-<section class="p-8 dark:text-white">
-	<Heading customSize="text-3xl">{data.title}</Heading>
-	<Img src={data.eyecatch?.url} alt="" imgClass="py-4" />
-	<div>{@html data.content}</div>
+<section class=" p-20">
+	<Heading customSize="text-3xl">{data.travel.name}</Heading>
+	<List tag="ul" class="space-y-1">
+		{#each data.blogs.contents as blog}
+			<Li>{blog.day}日目</Li>
+		{/each}
+	</List>
 </section>

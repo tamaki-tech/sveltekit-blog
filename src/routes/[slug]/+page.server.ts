@@ -1,8 +1,23 @@
-import { getDetail } from '$lib/api/schemas';
+import {
+	getBlogsByTravelId,
+	getTravelById,
+	type BlogResponse,
+	type Travel
+} from '$lib/api/schemas';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
-	return await getDetail(params.slug);
+type blogListPageData = {
+	travel: Travel;
+	blogs: BlogResponse;
 };
 
-export const prerender = true;
+export const load: PageServerLoad = async ({ params }): Promise<blogListPageData> => {
+	const travel = await getTravelById(params.slug);
+	const blogs = await getBlogsByTravelId(params.slug);
+	return {
+		travel,
+		blogs
+	};
+};
+
+export const prerender = false;
