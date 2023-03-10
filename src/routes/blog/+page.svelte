@@ -10,7 +10,7 @@
 <List tag="ul" class="space-y-1">
 	{#each data.contents as travel}
 		<Li>
-			<Link href={`${travel.id}`}>
+			<Link href={`blog/${travel.id}`}>
 				{travel.name}
 			</Link>
 		</Li>

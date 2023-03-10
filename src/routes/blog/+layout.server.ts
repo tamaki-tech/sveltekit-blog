@@ -1,5 +1,5 @@
-import { getBlogsByTravelId, getTravels } from '../lib/api/schemas';
-import type { LayoutServerLoad } from './$types';
+import { getBlogsByTravelId, getTravels } from '$lib/api/schemas';
+import type { LayoutServerLoad } from '../$types';
 
 type SidebarPageData = {
 	travels: {

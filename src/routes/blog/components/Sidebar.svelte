@@ -40,7 +40,7 @@
 							<SidebarItem
 								spanClass="px-8"
 								label={`${blog.day}日目`}
-								href={`/${travel.id}/${blog.id}`}
+								href={`/blog/${travel.id}/${blog.id}`}
 								on:click={toggleSide}
 								active={$page.url.pathname === `/${travel.id}/${blog.id}`}
 							/>
@@ -49,7 +49,7 @@
 				{:else}
 					<SidebarItem
 						label={travel.name}
-						href={`/${travel.id}`}
+						href={`/blog/${travel.id}`}
 						on:click={toggleSide}
 						active={$page.url.pathname === `/${travel.id}`}
 					/>

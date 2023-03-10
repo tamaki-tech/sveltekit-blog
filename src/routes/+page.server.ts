@@ -1,8 +1,5 @@
-import { getTravels } from '../lib/api/schemas';
-import type { PageServerLoad } from './$types';
+import { redirect } from '@sveltejs/kit';
 
-export const load: PageServerLoad = async () => {
-	return await getTravels();
-};
-
-export const prerender = true;
+export function load() {
+	throw redirect(307, '/login');
+}
