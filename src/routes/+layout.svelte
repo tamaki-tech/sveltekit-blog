@@ -1,21 +1,11 @@
 <script lang="ts">
 	import '../app.css';
 	import '$lib/css/global.css';
-	import { page } from '$app/stores';
-	import {
-		DarkMode,
-		Navbar,
-		NavHamburger,
-		Sidebar,
-		SidebarGroup,
-		SidebarItem,
-		SidebarWrapper,
-		Drawer,
-		CloseButton,
-		SidebarDropdownWrapper
-	} from 'flowbite-svelte';
+	import { Navbar, NavHamburger, Drawer, CloseButton } from 'flowbite-svelte';
 	import { sineIn } from 'svelte/easing';
 	import type { LayoutData } from './$types';
+	import DarkModeToggleButton from './components/DarkModeToggleButton.svelte';
+	import Sidebar from './components/Sidebar.svelte';
 
 	export let data: LayoutData;
 
@@ -46,9 +36,7 @@
 	<NavHamburger on:click={() => (drawerHidden = false)} btnClass="ml-3 lg:hidden" />
 </Navbar>
 
-<DarkMode
-	class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-lg p-2.5 fixed right-2 top-12  md:top-3 md:right-2 z-50"
-/>
+<DarkModeToggleButton />
 
 <Drawer
 	transitionType="fly"
@@ -67,44 +55,8 @@
 	<div class="flex items-center">
 		<CloseButton on:click={() => (drawerHidden = true)} class="mb-4 dark:text-white lg:hidden" />
 	</div>
-	<Sidebar asideClass="w-54">
-		<SidebarWrapper divClass="overflow-hidden py-4 px-3 rounded dark:bg-gray-800">
-			<SidebarGroup>
-				<SidebarItem
-					label="HOME"
-					href="/"
-					on:click={toggleSide}
-					active={$page.url.pathname === '/'}
-				/>
-				{#each data.travels as travel}
-					{#if travel.blogs.length > 0}
-						<SidebarDropdownWrapper
-							label={travel.name}
-							isOpen={$page.url.pathname.includes(travel.id)}
-							active={$page.url.pathname === `/${travel.id}`}
-						>
-							{#each travel.blogs as blog}
-								<SidebarItem
-									spanClass="px-8"
-									label={`${blog.day}日目`}
-									href={`/${travel.id}/${blog.id}`}
-									on:click={toggleSide}
-									active={$page.url.pathname === `/${travel.id}/${blog.id}`}
-								/>
-							{/each}
-						</SidebarDropdownWrapper>
-					{:else}
-						<SidebarItem
-							label={travel.name}
-							href={`/${travel.id}`}
-							on:click={toggleSide}
-							active={$page.url.pathname === `/${travel.id}`}
-						/>
-					{/if}
-				{/each}
-			</SidebarGroup>
-		</SidebarWrapper>
-	</Sidebar>
+
+	<Sidebar asideClass="w-54" {data} on:click={toggleSide} />
 </Drawer>
 
 <div class="flex px-4 mx-auto w-full">
