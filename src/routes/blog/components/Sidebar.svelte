@@ -25,16 +25,15 @@
 		<SidebarGroup>
 			<SidebarItem
 				label="HOME"
-				href="/"
+				href="/blog"
 				on:click={toggleSide}
-				active={$page.url.pathname === '/'}
+				active={$page.url.pathname === '/blog'}
 			/>
 			{#each data.travels as travel}
 				{#if travel.blogs.length > 0}
 					<SidebarDropdownWrapper
 						label={travel.name}
 						isOpen={$page.url.pathname.includes(travel.id)}
-						active={$page.url.pathname === `/${travel.id}`}
 					>
 						{#each travel.blogs as blog}
 							<SidebarItem
@@ -42,17 +41,12 @@
 								label={`${blog.day}日目`}
 								href={`/blog/${travel.id}/${blog.id}`}
 								on:click={toggleSide}
-								active={$page.url.pathname === `/${travel.id}/${blog.id}`}
+								active={$page.url.pathname === `/blog/${travel.id}/${blog.id}`}
 							/>
 						{/each}
 					</SidebarDropdownWrapper>
 				{:else}
-					<SidebarItem
-						label={travel.name}
-						href={`/blog/${travel.id}`}
-						on:click={toggleSide}
-						active={$page.url.pathname === `/${travel.id}`}
-					/>
+					<SidebarItem label={travel.name} href={`/blog/${travel.id}`} on:click={toggleSide} />
 				{/if}
 			{/each}
 		</SidebarGroup>
