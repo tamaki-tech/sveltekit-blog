@@ -75,7 +75,7 @@
 					on:click={toggleSide}
 					active={$page.url.pathname === '/'}
 				/>
-				{#each data.contents as travel}
+				{#each data.travels as travel}
 					<SidebarItem
 						label={travel.name}
 						href={`/${travel.id}`}

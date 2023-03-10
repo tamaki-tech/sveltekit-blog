@@ -36,7 +36,7 @@ export type TravelResponse = {
 	contents: Travel[];
 };
 
-export const getList = async (queries?: MicroCMSQueries) => {
+export const getBlogs = async (queries?: MicroCMSQueries) => {
 	return await client.get<BlogResponse>({ endpoint: 'blogs', queries });
 };
 
@@ -47,13 +47,13 @@ export const getBlogsByTravelId = async (travelId: string) => {
 	});
 };
 
+export const getTravels = async (queries?: MicroCMSQueries) => {
+	return await client.get<TravelResponse>({ endpoint: 'travels', queries });
+};
+
 export const getTravelById = async (travelId: string) => {
 	return await client.get<Travel>({
 		endpoint: 'travels',
 		contentId: travelId
 	});
-};
-
-export const getTravels = async (queries?: MicroCMSQueries) => {
-	return await client.get<TravelResponse>({ endpoint: 'travels', queries });
 };
