@@ -40,6 +40,10 @@ export const getBlogs = async (queries?: MicroCMSQueries) => {
 	return await client.get<BlogResponse>({ endpoint: 'blogs', queries });
 };
 
+export const getBlogById = async (blogId: string) => {
+	return await client.get<Blog>({ endpoint: 'blogs', contentId: blogId });
+};
+
 export const getBlogsByTravelId = async (travelId: string) => {
 	return await client.get<BlogResponse>({
 		endpoint: 'blogs',
