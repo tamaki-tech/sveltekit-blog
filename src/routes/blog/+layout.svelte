@@ -59,7 +59,7 @@
 		}}
 		bind:hidden={drawerHidden}
 		bind:activateClickOutside
-		width="w-64"
+		width="w-72"
 		class="overflow-scroll pb-32 bg-zinc-50"
 		id="sidebar"
 	>
@@ -71,8 +71,8 @@
 	</Drawer>
 
 	<div class="flex px-4 mx-auto w-full">
-		<main class="lg:ml-72 w-full mx-auto">
-			<section class="p-20 lg:p-16">
+		<main class="lg:ml-96 w-full mx-auto">
+			<section class="p-6 lg:p-16">
 				<slot />
 			</section>
 		</main>

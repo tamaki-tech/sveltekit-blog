@@ -11,3 +11,6 @@ body {
   h3 {
     @apply text-xl font-bold py-4;
   }
+  img {
+		@apply  lg:max-w-screen-lg rounded-md my-4;
+	}
