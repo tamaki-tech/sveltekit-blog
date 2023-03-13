@@ -8,7 +8,6 @@
 	let password = '';
 
 	const signIn = async () => {
-		console.log(email);
 		try {
 			const res = await signInWithEmailAndPassword(auth, email, password);
 			authStore.set({ ...$authStore, isLoggedIn: true, user: res.user });

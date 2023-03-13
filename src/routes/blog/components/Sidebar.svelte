@@ -18,6 +18,10 @@
 	const toggleSide = () => {
 		dispatch('click');
 	};
+
+	const signOut = () => {
+		dispatch('signOut');
+	};
 </script>
 
 <Sidebar {asideClass}>
@@ -49,6 +53,7 @@
 					<SidebarItem label={travel.name} href={`/blog/${travel.id}`} on:click={toggleSide} />
 				{/if}
 			{/each}
+			<SidebarItem label="LOGOUT" on:click={signOut} />
 		</SidebarGroup>
 	</SidebarWrapper>
 </Sidebar>

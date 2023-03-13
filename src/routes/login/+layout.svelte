@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { authStore } from '$lib/store';
+	import { authStore, type AuthStoreType } from '$lib/store';
 	import { onDestroy } from 'svelte';
 
-	const unsbscribe = authStore.subscribe((info) => {
-		if (info.isLoggedIn) {
-			goto('/blog');
-		}
+	let userInfo: AuthStoreType;
+
+	const unsbscribe = authStore.subscribe(async (user) => {
+		console.log('login', user);
+		if (user.isLoggedIn) return await goto('/blog');
+		userInfo = user;
 	});
 
 	onDestroy(() => {
@@ -14,6 +16,8 @@
 	});
 </script>
 
-<div class="h-screen w-screen flex justify-center items-center">
-	<slot />
-</div>
+{#if userInfo && !userInfo.isLoggedIn}
+	<div class="h-screen w-screen flex justify-center items-center">
+		<slot />
+	</div>
+{/if}
