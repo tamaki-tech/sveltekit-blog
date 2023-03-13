@@ -26,4 +26,4 @@ export const load: PageServerLoad = async ({ params }): Promise<blogListPageData
 	};
 };
 
-export const prerender = true;
+export const prerender = false;

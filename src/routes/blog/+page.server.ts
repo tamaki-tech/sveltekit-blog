@@ -5,4 +5,4 @@ export const load: PageServerLoad = async () => {
 	return await getTravels();
 };
 
-export const prerender = true;
+export const prerender = false;

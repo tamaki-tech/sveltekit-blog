@@ -1,5 +1,5 @@
 import { getBlogsByTravelId, getTravels } from '$lib/api/schemas';
-import type { LayoutServerLoad } from '../$types';
+import type { LayoutServerLoad } from './$types';
 
 type SidebarPageData = {
 	travels: {
@@ -33,4 +33,4 @@ export const load: LayoutServerLoad = async (): Promise<SidebarPageData> => {
 	};
 };
 
-export const prerender = true;
+export const prerender = false;

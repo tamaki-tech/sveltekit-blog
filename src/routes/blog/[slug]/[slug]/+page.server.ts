@@ -5,4 +5,4 @@ export const load: PageServerLoad = async ({ params }) => {
 	return await getBlogById(params.slug);
 };
 
-export const prerender = true;
+export const prerender = false;
