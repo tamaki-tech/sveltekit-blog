@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { auth } from '$lib/auth/firebase';
+	import DarkModeToggleButton from '$lib/components/DarkModeToggleButton.svelte';
 	import { authStore, type AuthStoreType } from '$lib/store';
 	import { Navbar, NavHamburger, Drawer, CloseButton } from 'flowbite-svelte';
-	import { onDestroy } from 'svelte';
 	import { sineIn } from 'svelte/easing';
 	import type { LayoutData } from './$types';
 	import Sidebar from './components/Sidebar.svelte';
@@ -68,11 +68,12 @@
 		</div>
 
 		<Sidebar asideClass="w-54" {data} on:click={toggleSide} on:signOut={signOut} />
+		<DarkModeToggleButton />
 	</Drawer>
 
 	<div class="flex px-4 mx-auto w-full">
-		<main class="lg:ml-96 w-full mx-auto">
-			<section class="p-6 lg:p-16">
+		<main class="lg:ml-96 w-full">
+			<section>
 				<slot />
 			</section>
 		</main>

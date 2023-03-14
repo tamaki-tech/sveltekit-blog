@@ -12,5 +12,5 @@ body {
     @apply text-xl font-bold py-4;
   }
   img {
-		@apply  lg:max-w-screen-lg rounded-md my-4;
+		@apply  lg:max-w-screen-sm rounded-md my-4 w-full;
 	}

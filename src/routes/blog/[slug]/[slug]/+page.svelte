@@ -5,7 +5,7 @@
 	export let data: PageServerData;
 </script>
 
-<article class=" dark:text-white">
+<article class="dark:text-white lg:w-2/3 w-full">
 	<Heading customSize="text-3xl">{data.day}日目</Heading>
 	<div>{@html data.content}</div>
 </article>
